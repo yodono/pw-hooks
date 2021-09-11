@@ -1,7 +1,10 @@
 import './UseState.css'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { AppContext } from '../../data/Store'
 
 const UseState = props => {
+    const { contextName, setContextName } = useContext(AppContext)
+
     const [name, setName] = useState('')
     const [lastName, setLastName] = useState('')
     const [message, setMessage] = useState('')
@@ -40,6 +43,13 @@ const UseState = props => {
                 >OK</button>
 
                 <p className="field">{message}</p>
+
+                <button
+                    className="button"
+                    onClick={() => setContextName(name)}
+                >
+                    Altera contexto (Store)
+                </button>
             </div>
         </div>
     )
